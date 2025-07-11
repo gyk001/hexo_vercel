@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>桂林5天旅行攻略 - 小仙女的美丽之旅</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .weather-info {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .weather-info h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .weather-card {
+            background: linear-gradient(45deg, #FFA726, #FFB74D);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .day-section {
+            background: rgba(255, 255, 255, 0.95);
+            margin-bottom: 30px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .day-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .day-header h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .attractions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .attraction-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .attraction-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .attraction-info {
+            padding: 20px;
+        }
+
+        .attraction-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .attraction-details {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: linear-gradient(45deg, #FF6B6B, #FF8E8E);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .taxi-button {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .taxi-button:hover {
+            background: linear-gradient(45deg, #45a049, #7CB342);
+        }
+
+        .map-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            margin: 10px;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .map-button:hover {
+            transform: scale(1.05);
+        }
+
+        .tips-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .tips-section h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .tip-card {
+            background: linear-gradient(45deg, #FFE0B2, #FFCC80);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tip-card h4 {
+            color: #E65100;
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            color: #666;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .attractions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .weather-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌸 桂林5天旅行攻略 🌸</h1>
+            <p>小仙女的美丽之旅 | 8月份避暑胜地</p>
+            <p>📍 北京出发 | 🎒 5天4夜 | 💰 预算友好</p>
+        </div>
+
+        <div class="weather-info">
+            <h3>🌤️ 桂林8月天气预报</h3>
+            <div class="weather-grid">
+                <div class="weather-card">
+                    <div>第1天</div>
+                    <div>🌧️ 阵雨</div>
+                    <div>26°C - 36°C</div>
+                </div>
+                <div class="weather-card">
+                    <div>第2天</div>
+                    <div>🌦️ 阵雨</div>
+                    <div>26°C - 33°C</div>
+                </div>
+                <div class="weather-card">
+                    <div>第3天</div>
+                    <div>🌧️ 阵雨</div>
+                    <div>26°C - 32°C</div>
+                </div>
+                <div class="weather-card">
+                    <div>第4天</div>
+                    <div>🌦️ 阵雨</div>
+                    <div>26°C - 33°C</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-section">
+            <div class="day-header">
+                <h2>第1天：北京-桂林市区</h2>
+                <p>抵达桂林，游览经典景点</p>
+            </div>
+            <div class="attractions-grid">
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        🐘 象鼻山美景
+                    </div>
+                    <div class="attraction-info">
+                        <div class="attraction-name">象鼻山景区</div>
+                        <div class="attraction-details">
+                            桂林的城徽，形似大象伸鼻饮水，是桂林山水的代表。夜晚可欣赏美丽的象鼻山夜景。
+                            <br>⏰ 开放时间：07:00-21:30
+                            <br>📍 地址：民主路1号
+                        </div>
+                        <div class="price-tag">💰 门票：55元</div>
+                        <br>
+                        <a href="amapuri://drive/takeTaxi?sourceApplication=amapplatform&slat=25.267579&slon=110.296573&sname=%E8%B1%A1%E9%BC%BB%E5%B1%B1%E6%99%AF%E5%8C%BA&dlon=110.295526&dlat=25.272690&dname=%E4%B8%A4%E6%B1%9F%E5%9B%9B%E6%B9%96%E6%99%AF%E5%8C%BA" class="taxi-button">🚗 打车到两江四湖</a>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        🌊 两江四湖夜景
+                    </div>
+                    <div class="attraction-info">
+                        <div class="attraction-name">两江四湖景区</div>
+                        <div class="attraction-details">
+                            桂林城市名片，乘船游览漓江、桃花江、木龙湖、桂湖、榕湖、杉湖，欣赏桂林夜景。
+                            <br>⏰ 开放时间：24小时
+                            <br>📍 地址：杉湖北路
+                        </div>
+                        <div class="price-tag">💰 门票：95元</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-section">
+            <div class="day-header">
+                <h2>第2天：桂林市区深度游</h2>
+                <p>探索桂林历史文化</p>
+            </div>
+            <div class="attractions-grid">
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        🏯 明代王城
+                    </div>
+                    <div class="attraction-info">
+                        <div class="attraction-name">靖江王城</div>
+                        <div class="attraction-details">
+                            明朝靖江王的王府，独秀峰风景优美，有"桂林山水甲天下"的摩崖石刻。
+                            <br>⏰ 开放时间：08:00-18:00
+                            <br>📍 地址：王城路1号
+                        </div>
+                        <div class="price-tag">💰 门票：100元</div>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        🏪 古色古香
+                    </div>
+                    <div class="attraction-info">
+                        <div class="attraction-name">东西巷</div>
+                        <div class="attraction-details">
+                            桂林明清古街，汇聚了众多桂林老字号商铺，美食、工艺品应有尽有。
+                            <br>⏰ 开放时间：全天
+                            <br>📍 地址：解放东路18号
+                        </div>
+                        <div class="price-tag">💰 免费</div>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        ⭐ 七星岩洞
+                    </div>
+                    <div class="attraction-info">
+                        <div class="attraction-name">七星景区</div>
+                        <div class="attraction-details">
+                            桂林最大的综合性景区，七星岩内钟乳石奇观，熊猫馆内憨态可掬的大熊猫。
+                            <br>⏰ 开放时间：08:00-18:00
+                            <br>📍 地址：七星路1号
+                        </div>
+                        <div class="price-tag">💰 门票：70元</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-section">
+            <div class="day-header">
+                <h2>第3天：桂林-阳朔</h2>
+                <p>前往阳朔，感受田园风光</p>
+            </div>
+            <div class="attractions-grid">
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        🛶 遇龙河漂流
+                    </div>
+                    <div class="attraction-info">
+                        <div class="attraction-name">遇龙河景区</div>
+                        <div class="attraction-details">
+                            "小漓江"之称，竹筏漂流，两岸山峰如画，田园风光，是摄影爱好者的天堂。
+                            <br>⏰ 开放时间：08:00-17:30
+                            <br>📍 地址：高田镇
+                        </div>
+                        <div class="price-tag">💰 竹筏：240元</div>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        🌃 西街夜景
+                    </div>
+                    <div class="attraction-info">
+                        <div class="attraction-name">阳朔西街</div>
+                        <div class="attraction-details">
+                            中西合璧的商业街，酒吧、餐厅、工艺品店林立，夜晚灯火辉煌，充满异域风情。
+                            <br>⏰ 开放时间：全天
+                            <br>📍 地址：阳朔西街
+                        </div>
+                        <div class="price-tag">💰 免费</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-section">
+            <div class="day-header">
+                <h2>第4天：阳朔一日游</h2>
+                <p>深度体验阳朔山水</p>
+            </div>
+            <div class="attractions-grid">
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        🚣 漓江竹筏
+                    </div>
+                    <div class="attraction-info">
+                        <div class="attraction-name">漓江竹筏游</div>
+                        <div class="attraction-details">
+                            体验"舟行碧波上，人在画中游"的意境，欣赏20元人民币背景的黄布倒影。
+                            <br>⏰ 开放时间：08:00-16:00
+                            <br>📍 地址：兴坪码头
+                        </div>
+                        <div class="price-tag">💰 竹筏：118元</div>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        🌺 十里画廊
+                    </div>
+                    <div class="attraction-info">
+                        <div class="attraction-name">十里画廊</div>
+                        <div class="attraction-details">
+                            阳朔最美的一段路，骑行或步行欣赏田园风光，蝴蝶泉、大榕树等景点。
+                            <br>⏰ 开放时间：全天
+                            <br>📍 地址：阳朔十里画廊
+                        </div>
+                        <div class="price-tag">💰 自行车：20元/天</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-section">
+            <div class="day-header">
+                <h2>第5天：阳朔-桂林-北京</h2>
+                <p>购买特产，返回北京</p>
+            </div>
+            <div class="attractions-grid">
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        🎭 芦笛岩洞
+                    </div>
+                    <div class="attraction-info">
+                        <div class="attraction-name">芦笛景区</div>
+                        <div class="attraction-details">
+                            "国宾洞"之称，洞内钟乳石在彩灯照射下，如梦如幻，被誉为"大自然的艺术宫殿"。
+                            <br>⏰ 开放时间：08:00-17:30
+                            <br>📍 地址：芦笛路1号
+                        </div>
+                        <div class="price-tag">💰 门票：110元</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="map-section">
+            <h3>🗺️ 个性化地图路线</h3>
+            <p>点击下方按钮在高德地图中查看完整旅行路线</p>
+            <a href="amapuri://workInAmap/createWithToken?polymericId=mcp_3c7c6135892f4ff59973f989b3ee18e1&from=MCP" class="map-button">📱 在高德地图中查看路线</a>
+        </div>
+
+        <div class="tips-section">
+            <h3>🎒 旅行小贴士</h3>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>🌧️ 天气准备</h4>
+                    <p>8月为雨季，建议携带雨具和防滑鞋，轻便透气的衣物为主。</p>
+                </div>
+                <div class="tip-card">
+                    <h4>🍜 美食推荐</h4>
+                    <p>桂林米粉、啤酒鱼、荔浦芋头、桂花糕等特色美食不容错过。</p>
+                </div>
+                <div class="tip-card">
+                    <h4>🚗 交通建议</h4>
+                    <p>市区内景点建议打车或公交，桂林-阳朔可乘坐大巴或包车。</p>
+                </div>
+                <div class="tip-card">
+                    <h4>📱 实用App</h4>
+                    <p>高德地图、美团、大众点评、桂林通等App提前下载备用。</p>
+                </div>
+                <div class="tip-card">
+                    <h4>💰 预算参考</h4>
+                    <p>门票约600元/人，住宿300-600元/晚，餐饮100-200元/天。</p>
+                </div>
+                <div class="tip-card">
+                    <h4>📸 拍照攻略</h4>
+                    <p>象鼻山倒影、漓江竹筏、遇龙河田园风光都是绝佳拍照点。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🌸 愿小仙女在桂林度过美好的5天时光 🌸</p>
+            <p>山水甲天下，美景伴佳人</p>
+            <p>© 2024 桂林旅行攻略 | 高德地图技术支持</p>
+        </div>
+    </div>
+
+    <script>
+        // 添加页面加载动画
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease-in-out';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // 为卡片添加点击效果
+        document.querySelectorAll('.attraction-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html> 
